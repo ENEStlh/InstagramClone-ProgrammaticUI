@@ -69,5 +69,5 @@ This project requires a Firebase configuration to run.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/InstagramClone.git
+   git clone https://github.com/ENEStlh/InstagramClone.ProgrammaticUI.git
 

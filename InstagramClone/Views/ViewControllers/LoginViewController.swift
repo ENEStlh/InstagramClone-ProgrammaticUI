@@ -6,15 +6,13 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
+    private let viewModel = LoginViewModel()
     
-    
-    //UI ELEMANLARI
-    private let loginButton = {
+    // UI Elemanları
+    private let loginButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Giriş Yap", for: .normal)
         btn.backgroundColor = .systemBlue
@@ -24,7 +22,7 @@ class LoginViewController: UIViewController {
         return btn
     }()
     
-    private let signUpButton = {
+    private let signUpButton: UIButton = {
         let btn2 = UIButton(type: .system)
         btn2.setTitle("Kayıt Ol", for: .normal)
         btn2.setTitleColor(.white, for: .normal)
@@ -34,7 +32,7 @@ class LoginViewController: UIViewController {
         return btn2
     }()
     
-    private let emailTextField = {
+    private let emailTextField: UITextField = {
         let etextfield = UITextField()
         etextfield.autocapitalizationType = .none
         etextfield.placeholder = "Email Giriniz"
@@ -43,37 +41,50 @@ class LoginViewController: UIViewController {
         return etextfield
     }()
     
-    private let sifreTextField = {
+    private let sifreTextField: UITextField = {
         let sifretextfield = UITextField()
         sifretextfield.autocapitalizationType = .none
         sifretextfield.placeholder = "Parola Giriniz"
+        sifretextfield.isSecureTextEntry = true
         sifretextfield.borderStyle = .roundedRect
         sifretextfield.translatesAutoresizingMaskIntoConstraints = false
         return sifretextfield
     }()
-    // LİFECYCLE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Giriş"
-        
         setupUI()
+        setupBindings() // ViewModel bağlantısı
+        
         loginButton.addTarget(self, action: #selector(girisYap), for: .touchUpInside)
-        signUpButton.addTarget(self, action: #selector(kayıtOl), for: .touchUpInside)
-        
-        
+        signUpButton.addTarget(self, action: #selector(kayitOl), for: .touchUpInside)
     }
     
-    // UI YERLEŞİMİ(NATİVE AUTO LAYOUT)
+    private func setupBindings() {
+        // Başarılı olursa
+        viewModel.onSuccess = { [weak self] in
+            self?.anaSayfayaGec()
+        }
+        
+        // Hata olursa
+        viewModel.onError = { [weak self] errorMessage in
+            self?.hata(messageInput: errorMessage, titleInpu: "HATA")
+        }
+    }
     
-    func setupUI(){
+    func setupUI() {
         view.addSubview(emailTextField)
         view.addSubview(sifreTextField)
         view.addSubview(loginButton)
         view.addSubview(signUpButton)
         
+        // Klavye kapatma extension'ı (Projenizde var olduğunu varsayıyorum)
+        self.klavyeyiKapatmaOzelligiEkle()
+        
         NSLayoutConstraint.activate([
-            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor,),
+            emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
             emailTextField.widthAnchor.constraint(equalToConstant: 300),
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
@@ -92,72 +103,28 @@ class LoginViewController: UIViewController {
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             signUpButton.widthAnchor.constraint(equalToConstant: 100),
             signUpButton.heightAnchor.constraint(equalToConstant: 40)
-            
         ])
     }
     
-    func anaSayfayaGec(){
-        guard let window = view.window else {return}
-        // Root değiştirme animasyonu
-        UIView.transition(with: window, duration: 0.5,options: .curveEaseInOut, animations:{
+    func anaSayfayaGec() {
+        guard let window = view.window else { return }
+        UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: {
             window.rootViewController = MainTabBarController()
-        },completion: nil)
+        }, completion: nil)
     }
     
-   @objc func girisYap(){
-        if   emailTextField.text != "" && sifreTextField.text != "" {
-            Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.sifreTextField.text!){(result, error) in
-                
-                if error != nil {
-                    self.hata(messageInput: error?.localizedDescription ?? "HATA", titleInpu: "HATA")
-                }
-                else{
-                    self.anaSayfayaGec()
-                }
-                
-                
-                
-            }
-            
-            
-            
-        }
-        else{
-            hata(messageInput: "Emaili ve Şifreyi Boş Bırakmayınız", titleInpu: "HATA")
-        }
-        
-    }
-    func hata(messageInput:String,titleInpu:String){
+    func hata(messageInput: String, titleInpu: String) {
         let alert = UIAlertController(title: titleInpu, message: messageInput, preferredStyle: .alert)
-        
         let okAction = UIAlertAction(title: "Tamam", style: .destructive)
         alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-        
-    }
- @objc   func kayıtOl(){
-        if   emailTextField.text != "" && sifreTextField.text != "" {
-            Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.sifreTextField.text!){(result, error) in
-                
-                if error != nil {
-                    self.hata(messageInput: error?.localizedDescription ?? "HATA", titleInpu: "HATA")
-                }
-                else{
-                    self.anaSayfayaGec()
-                }
-                
-                
-                
-            }
-            
-            
-            
-        }
-        else{
-            hata(messageInput: "Emaili ve Şifreyi Boş Bırakmayınız", titleInpu: "HATA")
-        }
-        
-        
+        self.present(alert, animated: true)
     }
     
+    @objc func girisYap() {
+        viewModel.authenticate(email: emailTextField.text ?? "", password: sifreTextField.text ?? "", isSignUp: false)
+    }
+    
+    @objc func kayitOl() {
+        viewModel.authenticate(email: emailTextField.text ?? "", password: sifreTextField.text ?? "", isSignUp: true)
+    }
 }

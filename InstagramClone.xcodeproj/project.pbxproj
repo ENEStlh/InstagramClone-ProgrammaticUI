@@ -42,8 +42,26 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Tests/InstagramCloneTests/InstagramCloneTests.swift,
+				Tests/InstagramCloneUITests/InstagramCloneUITests.swift,
+				Tests/InstagramCloneUITests/InstagramCloneUITestsLaunchTests.swift,
 			);
 			target = BC4D535C2F0544D7001BB790 /* InstagramClone */;
+		};
+		BC8202952F3F5D4800D19024 /* Exceptions for "InstagramClone" folder in "InstagramCloneTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/InstagramCloneTests/InstagramCloneTests.swift,
+			);
+			target = BC4D53722F0544D8001BB790 /* InstagramCloneTests */;
+		};
+		BC8202962F3F5D4800D19024 /* Exceptions for "InstagramClone" folder in "InstagramCloneUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/InstagramCloneUITests/InstagramCloneUITests.swift,
+				Tests/InstagramCloneUITests/InstagramCloneUITestsLaunchTests.swift,
+			);
+			target = BC4D537C2F0544D8001BB790 /* InstagramCloneUITests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -52,18 +70,10 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				BC4D53852F0544D8001BB790 /* Exceptions for "InstagramClone" folder in "InstagramClone" target */,
+				BC8202952F3F5D4800D19024 /* Exceptions for "InstagramClone" folder in "InstagramCloneTests" target */,
+				BC8202962F3F5D4800D19024 /* Exceptions for "InstagramClone" folder in "InstagramCloneUITests" target */,
 			);
 			path = InstagramClone;
-			sourceTree = "<group>";
-		};
-		BC4D53762F0544D8001BB790 /* InstagramCloneTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = InstagramCloneTests;
-			sourceTree = "<group>";
-		};
-		BC4D53802F0544D8001BB790 /* InstagramCloneUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = InstagramCloneUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -102,8 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				BC4D535F2F0544D7001BB790 /* InstagramClone */,
-				BC4D53762F0544D8001BB790 /* InstagramCloneTests */,
-				BC4D53802F0544D8001BB790 /* InstagramCloneUITests */,
 				BC4D535E2F0544D7001BB790 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -161,9 +169,6 @@
 			dependencies = (
 				BC4D53752F0544D8001BB790 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BC4D53762F0544D8001BB790 /* InstagramCloneTests */,
-			);
 			name = InstagramCloneTests;
 			packageProductDependencies = (
 			);
@@ -183,9 +188,6 @@
 			);
 			dependencies = (
 				BC4D537F2F0544D8001BB790 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BC4D53802F0544D8001BB790 /* InstagramCloneUITests */,
 			);
 			name = InstagramCloneUITests;
 			packageProductDependencies = (

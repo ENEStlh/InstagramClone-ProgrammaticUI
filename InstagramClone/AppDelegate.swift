@@ -35,4 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+import UIKit
+
+extension UIViewController {
+    func klavyeyiKapatmaOzelligiEkle() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        // Tıklama diğer etkileşimleri engellemesin diye false yapabilirsiniz (opsiyonel)
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 

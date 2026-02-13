@@ -1,73 +1,49 @@
-# 📸 Instagram Clone – iOS App
-An Instagram clone built with UIKit & Firebase to practice real-world iOS development.
+# 📸 Instagram Clone - iOS (MVVM)
 
-This project is an Instagram-like social media application developed using **Swift** and **UIKit**, built entirely with **Programmatic UI** (no Storyboards).
+[![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org)
+[![Platform](https://img.shields.io/badge/Platform-iOS%2015.0%2B-lightgrey.svg)](https://developer.apple.com/ios/)
+[![Architecture](https://img.shields.io/badge/Architecture-MVVM-blue.svg)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
+[![Firebase](https://img.shields.io/badge/Backend-Firebase-yellow.svg)](https://firebase.google.com/)
 
-The app uses **Firebase** as a backend service to provide authentication, real-time data updates, and image storage. Users can sign up, log in, share photos, like posts, and browse a real-time feed.
+An Instagram Clone application built with **Swift 5**, using **Firebase** for backend services. This project demonstrates modern iOS development practices, including **Programmatic UI** (No Storyboard) and the **MVVM** (Model-View-ViewModel) architectural pattern for clean, testable, and maintainable code.
 
----
+## 🌟 Features
 
-## 🚀 Features
+* **User Authentication:** Secure Sign Up and Login/Logout functionality using Firebase Auth.
+* **Real-time Feed:** Fetches posts from Firestore ordered by date.
+* **Media Upload:** Upload photos with comments to Firebase Storage & Firestore.
+* **Interaction:** Real-time "Like" system with immediate UI updates.
+* **Caching:** Efficient image loading and caching using `SDWebImage`.
+* **Programmatic UI:** All layouts are built with Auto Layout in code (no Interface Builder).
 
-- 🔐 **User Authentication**
-  - Secure sign up and login with Firebase Authentication
+## 📱 Screenshots
 
-- 🖼 **Photo Upload**
-  - Select images from the photo library
-  - Upload photos to Firebase Storage
+| Login / Sign Up | Home Feed | Photo Upload |
+|:---:|:---:|:---:|
+| <img src="Screenshots/login.png" width="250"> | <img src="Screenshots/feed.png" width="250"> | <img src="Screenshots/upload.png" width="250"> |
 
-- ⚡ **Real-Time Feed**
-  - Posts are stored and fetched from Firestore
-  - Includes image, caption, timestamp, and like count
+*(Note: Please add your screenshots to a folder named 'Screenshots' and update the paths above)*
 
-- ❤️ **Like System**
-  - Users can like and unlike posts
-  - Like count updates in real time
+## 🛠 Tech Stack
 
-- 🚀 **Asynchronous Image Loading**
-  - Fast and efficient image loading using `SDWebImage`
-  - Built-in image caching for better performance
+* **Language:** Swift 5
+* **Framework:** UIKit
+* **Architecture:** MVVM (Model-View-ViewModel)
+* **Backend:** Firebase (Auth, Firestore, Storage)
+* **Dependencies:**
+    * [SDWebImage](https://github.com/SDWebImage/SDWebImage) (for asynchronous image loading)
+    * Firebase SDK
 
-- 🧩 **Programmatic UI**
-  - No Storyboards
-  - 100% UIKit + Auto Layout constraints
+## 📂 Project Structure (MVVM)
 
-- 🧱 **MVC Architecture**
-  - Follows the Model-View-Controller design pattern
-  - Clean and maintainable code structure
+The project is structured to separate concerns and improve scalability:
 
----
-
-## 🛠 Technologies Used
-
-| Category | Technology |
-|--------|-----------|
-| Language | Swift 5 |
-| UI | UIKit (Programmatic UI) |
-| Backend | Firebase (Auth, Firestore, Storage) |
-| Architecture | MVC |
-| Dependency Management | Swift Package Manager |
-
----
-
-## 📦 Third-Party Libraries
-
-- **Firebase iOS SDK**
-  - Authentication
-  - Firestore
-  - Storage
-
-- **SDWebImage**
-  - Asynchronous image loading
-  - Image caching  
-  🔗 https://github.com/SDWebImage/SDWebImage
-
-
-## ⚙️ Installation
-
-This project requires a Firebase configuration to run.
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ENEStlh/InstagramClone.ProgrammaticUI.git
-
+```text
+InstagramClone/
+├── Models/              # Data structures (Post.swift)
+├── ViewModels/          # Business logic & Firebase calls (FeedViewModel, LoginViewModel...)
+├── Views/
+│   ├── Cells/           # Custom UI Cells (FeedCell.swift)
+│   └── Controllers/     # View Controllers (FeedVC, UploadVC...)
+├── Supporting Files/    # AppDelegate, SceneDelegate, Info.plist
+└── Extensions/          # Helper extensions

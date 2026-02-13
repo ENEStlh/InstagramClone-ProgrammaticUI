@@ -79,7 +79,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             DispatchQueue.main.async {
                 self?.imageView.image = UIImage(named: "Image")
                 self?.yorumTextField.text = ""
-                self?.tabBarController?.selectedIndex = 0 // Feed'e dön
+                self?.tabBarController?.selectedIndex = 0 
             }
         }
         

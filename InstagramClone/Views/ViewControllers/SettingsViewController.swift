@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController {
             if success {
                 guard let window = self?.view.window else { return }
                 
-                // Root ViewController değiştirme (Login ekranına dönüş)
+                // logine donus
                 let loginVC = UINavigationController(rootViewController: LoginViewController())
                 
                 UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: {

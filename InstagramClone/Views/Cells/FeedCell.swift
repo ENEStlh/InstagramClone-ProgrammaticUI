@@ -14,7 +14,7 @@ class FeedCell: UITableViewCell {
     let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.numberOfLines = 0 // Alt satıra geçebilsin
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -22,7 +22,7 @@ class FeedCell: UITableViewCell {
     let postImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit // Resim taşmasın, tamamı görünsün (Instagram genelde 1:1 AspectFill kullanır ama Fit daha güvenlidir)
+        image.contentMode = .scaleAspectFit
         image.backgroundColor = .systemGray6
         image.clipsToBounds = true
         return image
@@ -30,7 +30,7 @@ class FeedCell: UITableViewCell {
     
     let likeButton: UIButton = {
         let like = UIButton(type: .system)
-        // "Like" yazısını kaldırdık, sadece ikon olsun
+       
         like.setImage(UIImage(systemName: "heart"), for: .normal)
         like.tintColor = .black
         like.translatesAutoresizingMaskIntoConstraints = false
@@ -40,15 +40,15 @@ class FeedCell: UITableViewCell {
     let likeLabel: UILabel = {
         let likelabel = UILabel()
         likelabel.font = UIFont.boldSystemFont(ofSize: 15)
-        likelabel.text = "0 Beğeni" // Sadece sayı değil, yanında metin de olabilir
+        likelabel.text = "0 Beğeni"
         likelabel.translatesAutoresizingMaskIntoConstraints = false
         return likelabel
     }()
     
     let yorumLabel: UILabel = {
         let yorum = UILabel()
-        yorum.font = UIFont.systemFont(ofSize: 14) // Yorumlar genelde bold olmaz
-        yorum.numberOfLines = 0 // Uzun yorumlar tamamı görünsün
+        yorum.font = UIFont.systemFont(ofSize: 14) 
+        yorum.numberOfLines = 0
         yorum.translatesAutoresizingMaskIntoConstraints = false
         return yorum
     }()

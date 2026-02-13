@@ -11,7 +11,7 @@ import FirebaseAuth
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let tableView = UITableView()
-    private let viewModel = FeedViewModel() // ViewModel Instance
+    private let viewModel = FeedViewModel() 
     
     override func viewDidLoad() {
         super.viewDidLoad()

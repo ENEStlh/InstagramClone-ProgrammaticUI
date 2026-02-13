@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class SettingsViewModel {
     
-    // View Controller tarafında (success, error) beklendiği için tanımı güncelliyoruz:
+    // View Controller tarafında (success, error) beklendiği için bu sekilde
     // completion: (BasariliMi, HataMesaji?)
     func signOut(completion: (Bool, String?) -> Void) {
         do {
@@ -18,7 +18,7 @@ class SettingsViewModel {
             // Başarılı oldu (true), hata yok (nil)
             completion(true, nil)
         } catch {
-            // Başarısız oldu (false), hatayı gönder (error.localizedDescription)
+            // Başarısız oldu (false), hatayı gönder 
             completion(false, error.localizedDescription)
         }
     }

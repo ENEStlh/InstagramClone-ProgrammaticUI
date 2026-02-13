@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
         view.addSubview(loginButton)
         view.addSubview(signUpButton)
         
-        // Klavye kapatma extension'ı (Projenizde var olduğunu varsayıyorum)
+        // Klavye kapatma extension App delegate ye ekledim
         self.klavyeyiKapatmaOzelligiEkle()
         
         NSLayoutConstraint.activate([

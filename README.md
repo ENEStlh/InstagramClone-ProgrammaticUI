@@ -18,11 +18,10 @@ An Instagram Clone application built with **Swift 5**, using **Firebase** for ba
 
 ## 📱 Screenshots
 
-| Login / Sign Up | Home Feed | Photo Upload |
-|:---:|:---:|:---:|
-| <img src="Screenshots/login.png" width="250"> | <img src="Screenshots/feed.png" width="250"> | <img src="Screenshots/upload.png" width="250"> |
+|  Home Feed |
 
-*(Note: Please add your screenshots to a folder named 'Screenshots' and update the paths above)*
+| <img src="Desktop/Screenshot 2026-02-13 at 16.43.47" width="250">  
+
 
 ## 🛠 Tech Stack
 

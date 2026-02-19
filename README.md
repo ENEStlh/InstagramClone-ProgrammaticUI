@@ -16,13 +16,6 @@ An Instagram Clone application built with **Swift 5**, using **Firebase** for ba
 * **Caching:** Efficient image loading and caching using `SDWebImage`.
 * **Programmatic UI:** All layouts are built with Auto Layout in code (no Interface Builder).
 
-## 📱 Screenshots
-
-|  Home Feed |
-
-| <img src="Desktop/Screenshot 2026-02-13 at 16.43.47" width="250">  
-
-
 ## 🛠 Tech Stack
 
 * **Language:** Swift 5

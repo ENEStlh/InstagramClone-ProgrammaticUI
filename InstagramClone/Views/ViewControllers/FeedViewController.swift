@@ -20,7 +20,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupTableView()
         setupBindings()
         
-        // Verileri çekmeye başla
+        // Verileri çekmek
         viewModel.fetchPosts()
     }
     
